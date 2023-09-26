@@ -30,8 +30,9 @@
   },
   commitMessageLowerCase: 'never',
   prHourlyLimit: 0,
-  regexManagers: [
+  customManagers: [
     {
+      customType: 'regex',
       fileMatch: [
         '\\.tf$',
         '\\.hcl$',
