@@ -7,7 +7,7 @@
     ':ignoreUnstable',
     ':semanticCommits',
     ':semanticPrefixFixDepsChoreOthers',
-    'regexManagers:githubActionsVersions',
+    'customManagers:githubActionsVersions',
     ':preserveSemverRanges',
   ],
   dependencyDashboardTitle: 'Renovate Dependency Dashboard',
@@ -30,8 +30,9 @@
   },
   commitMessageLowerCase: 'never',
   prHourlyLimit: 0,
-  regexManagers: [
+  customManagers: [
     {
+      customType: 'regex',
       fileMatch: [
         '\\.tf$',
         '\\.hcl$',
