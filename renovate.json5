@@ -7,7 +7,7 @@
     ':ignoreUnstable',
     ':semanticCommits',
     ':semanticPrefixFixDepsChoreOthers',
-    'regexManagers:githubActionsVersions',
+    'customManagers:githubActionsVersions',
     ':preserveSemverRanges',
   ],
   dependencyDashboardTitle: 'Renovate Dependency Dashboard',
@@ -30,11 +30,12 @@
   },
   commitMessageLowerCase: 'never',
   prHourlyLimit: 0,
-  regexManagers: [
+  customManagers: [
     {
-      fileMatch: [
-        '\\.tf$',
-        '\\.hcl$',
+      customType: 'regex',
+      managerFilePatterns: [
+        '/\\.tf$/',
+        '/\\.hcl$/',
       ],
       matchStrings: [
         'source\\s*=\\s*"tfr://(?<registryUrl>.*?)/(?<org>.+?)/(?<name>.+?)/(?<cloud>.+?)(?:/.+?)?\\?version=(?<currentValue>.*?)"',
