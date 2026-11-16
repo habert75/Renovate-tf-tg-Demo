@@ -7,14 +7,16 @@
     ':ignoreUnstable',
     ':semanticCommits',
     ':semanticPrefixFixDepsChoreOthers',
-    'regexManagers:githubActionsVersions',
+    'customManagers:githubActionsVersions',
     ':preserveSemverRanges',
   ],
-  dependencyDashboardTitle: 'Renovate Dependency Dashboard',
-  dependencyDashboardLabels: [
-    'auto-update',
-  ],
-  dependencyDashboardHeader: 'This issue lists Renovate updates and detected dependencies. Read the [Dependency Dashboard](https://docs.renovatebot.com/key-concepts/dashboard/) docs to learn more.<br>Renovate logs for debug [here](https://developer.mend.io/{{platform}}/{{repository}}).',
+  dependencyDashboard: {
+    title: 'Renovate Dependency Dashboard',
+    labels: [
+      'auto-update',
+    ],
+    header: 'This issue lists Renovate updates and detected dependencies. Read the [Dependency Dashboard](https://docs.renovatebot.com/key-concepts/dashboard/) docs to learn more.<br>Renovate logs for debug [here](https://developer.mend.io/{{platform}}/{{repository}}).',
+  },
   minimumReleaseAge: '3 days',
   rollbackPrs: true,
   addLabels: [
@@ -30,11 +32,12 @@
   },
   commitMessageLowerCase: 'never',
   prHourlyLimit: 0,
-  regexManagers: [
+  customManagers: [
     {
-      fileMatch: [
-        '\\.tf$',
-        '\\.hcl$',
+      customType: 'regex',
+      managerFilePatterns: [
+        '/\\.tf$/',
+        '/\\.hcl$/',
       ],
       matchStrings: [
         'source\\s*=\\s*"tfr://(?<registryUrl>.*?)/(?<org>.+?)/(?<name>.+?)/(?<cloud>.+?)(?:/.+?)?\\?version=(?<currentValue>.*?)"',
